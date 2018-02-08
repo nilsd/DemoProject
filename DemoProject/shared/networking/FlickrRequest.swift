@@ -16,11 +16,17 @@ class FlickrRequest {
     private let baseURLString = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1"
     private var request: Alamofire.Request?
     
+    var isFetching = false
+    
     
     func fetchPhotos(withTag tag: String, completion: @escaping FlickrRequestCompletion) {
         let url = baseURLString + "&tags=\(tag)"
         
-        request = Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseData(completionHandler: { (response) in
+        isFetching = true
+        
+        request = Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseData(completionHandler: { [weak self] (response) in
+            self?.isFetching = false
+            
             guard response.error == nil else {
                 return completion(.unhandled, nil)
             }
@@ -35,6 +41,7 @@ class FlickrRequest {
     
     func cancel() {
         request?.cancel()
+        isFetching = false
     }
     
 }

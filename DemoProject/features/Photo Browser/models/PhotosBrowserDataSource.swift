@@ -14,8 +14,12 @@ class PhotosBrowserDataSource: NSObject, UICollectionViewDataSource {
     weak var collectionView: UICollectionView?
     
     var media = [RemoteMedia]()
-    var flickrRequest: FlickrRequest?
+    var mediaRequest: FlickrRequest?
     var imageFetcher = ImageFetcher()
+    
+    var isFetchingData: Bool {
+        return mediaRequest?.isFetching == true
+    }
     
     
     /**
@@ -36,6 +40,30 @@ class PhotosBrowserDataSource: NSObject, UICollectionViewDataSource {
         
         imageFetcher.delegate = self
     }
+    
+    
+    // MARK: - Data population
+    
+    func appendMedia(_ media: [RemoteMedia]) {
+        var indexPaths = [IndexPath]()
+        
+        for m in media {
+            self.media.append(m)
+            indexPaths.append(IndexPath(item: self.media.count - 1, section: 0))
+        }
+        
+        collectionView?.insertItems(at: indexPaths)
+    }
+    
+    
+    // MARK: Helper functions
+    
+    func isLastIndexPath(_ indexPath: IndexPath) -> Bool {
+        return indexPath.row == media.count - 1
+    }
+    
+    
+    // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.cellIdentifier, for: indexPath) as! PhotoCollectionViewCell
@@ -62,31 +90,33 @@ class PhotosBrowserDataSource: NSObject, UICollectionViewDataSource {
 
 extension PhotosBrowserDataSource {
     
-    func fetchFlickrPhotos(withTag tag: String) {
-        flickrRequest = FlickrRequest()
+    func fetchFlickrPhotos(withTag tag: String, completion: @escaping (_ success: Bool) -> ()) {
+        mediaRequest = FlickrRequest()
         
-        flickrRequest?.fetchPhotos(withTag: tag, completion: { (error, response) in
+        mediaRequest?.fetchPhotos(withTag: tag, completion: { [weak self] (error, response) in
             guard error == nil else {
                 debugPrint(error! as Any)
-                return
+                return completion(false)
             }
             
             guard let flickrItems = response?.items else {
                 debugPrint("No Flickr items fetched")
-                return
+                return completion(false)
             }
             
-            self.media = flickrItems.map { item in
+            let newMedia = flickrItems.map { item in
                 return FlickrMedia(url: item.media.url)
             }
             
-            self.collectionView?.reloadData()
+            self?.appendMedia(newMedia)
+            
+            completion(true)
         })
     }
     
     
     func stopFetching() {
-        flickrRequest?.cancel()
+        mediaRequest?.cancel()
         imageFetcher.cancel()
     }
     
@@ -101,7 +131,7 @@ extension PhotosBrowserDataSource: ImageFetcherDelegate {
         guard let image = image else { return }
         
         // Store image in ImageCache
-        
+                
         ImageCache.shared.setCachedImage(withURL: url, image: image)
         
         

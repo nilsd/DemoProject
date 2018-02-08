@@ -19,6 +19,9 @@ class PhotoBrowserViewController: UIViewController {
     
     var dataSource: PhotosBrowserDataSource!
     
+    var flickrTagsToFetch = ["spacex", "falconheavy", "starman"]
+    var currentFlickrTagIndex = 0
+    
     
     // MARK: - Life cycle
     
@@ -31,7 +34,18 @@ class PhotoBrowserViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        dataSource.fetchFlickrPhotos(withTag: "spacex")
+        fetchFlickrImages()
+    }
+    
+    
+    func fetchFlickrImages() {
+        guard let tagToFetch = flickrTagsToFetch[safe: currentFlickrTagIndex] else { return }
+        guard !dataSource.isFetchingData else { return }
+        
+        dataSource.fetchFlickrPhotos(withTag: tagToFetch) { [weak self] success in
+            guard success else { return }
+            self?.currentFlickrTagIndex += 1
+        }
     }
     
 }
@@ -66,7 +80,7 @@ extension PhotoBrowserViewController : UICollectionViewDelegateFlowLayout {
     }
     
     
-    // MARK: Delegate functions
+    // MARK: Layout delegate functions
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
@@ -82,6 +96,16 @@ extension PhotoBrowserViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
+    }
+    
+    
+    // MARK: Delegate functions
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        // If displaying last cell, try to fetch more photos
+        if dataSource.isLastIndexPath(indexPath) {
+            fetchFlickrImages()
+        }
     }
     
 }

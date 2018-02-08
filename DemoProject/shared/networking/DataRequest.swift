@@ -12,6 +12,10 @@ class DataRequest {
     
     private var request: Alamofire.Request?
     
+    deinit {
+        cancel()
+    }
+    
     
     func getData(fromURL url: URL, completion: @escaping DataRequestCompletion) {
         request = Alamofire.request(url).responseData(completionHandler: { (response) in
