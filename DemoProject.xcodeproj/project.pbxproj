@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		78019550202C64FD00225C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7801954F202C64FD00225C61 /* AppDelegate.swift */; };
-		78019552202C64FD00225C61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78019551202C64FD00225C61 /* ViewController.swift */; };
+		78019552202C64FD00225C61 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78019551202C64FD00225C61 /* PhotoBrowserViewController.swift */; };
 		78019555202C64FD00225C61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78019553202C64FD00225C61 /* Main.storyboard */; };
 		78019557202C64FD00225C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78019556202C64FD00225C61 /* Assets.xcassets */; };
 		7801955A202C64FD00225C61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78019558202C64FD00225C61 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		7801954C202C64FD00225C61 /* DemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7801954F202C64FD00225C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		78019551202C64FD00225C61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		78019551202C64FD00225C61 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		78019554202C64FD00225C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78019556202C64FD00225C61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78019559202C64FD00225C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +54,78 @@
 		7801954E202C64FD00225C61 /* DemoProject */ = {
 			isa = PBXGroup;
 			children = (
-				7801954F202C64FD00225C61 /* AppDelegate.swift */,
-				78019551202C64FD00225C61 /* ViewController.swift */,
 				78019553202C64FD00225C61 /* Main.storyboard */,
+				78019562202C654700225C61 /* features */,
+				78019567202C65C500225C61 /* shared */,
+				78019561202C653200225C61 /* supporting files */,
+			);
+			path = DemoProject;
+			sourceTree = "<group>";
+		};
+		78019561202C653200225C61 /* supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				7801954F202C64FD00225C61 /* AppDelegate.swift */,
 				78019556202C64FD00225C61 /* Assets.xcassets */,
 				78019558202C64FD00225C61 /* LaunchScreen.storyboard */,
 				7801955B202C64FD00225C61 /* Info.plist */,
 			);
-			path = DemoProject;
+			path = "supporting files";
+			sourceTree = "<group>";
+		};
+		78019562202C654700225C61 /* features */ = {
+			isa = PBXGroup;
+			children = (
+				78019563202C655500225C61 /* Photo Browser */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
+		78019563202C655500225C61 /* Photo Browser */ = {
+			isa = PBXGroup;
+			children = (
+				78019566202C657C00225C61 /* models */,
+				78019565202C657800225C61 /* views */,
+				78019564202C656F00225C61 /* controllers */,
+			);
+			path = "Photo Browser";
+			sourceTree = "<group>";
+		};
+		78019564202C656F00225C61 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				78019551202C64FD00225C61 /* PhotoBrowserViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		78019565202C657800225C61 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		78019566202C657C00225C61 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		78019567202C65C500225C61 /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				78019568202C65CF00225C61 /* models */,
+			);
+			path = shared;
+			sourceTree = "<group>";
+		};
+		78019568202C65CF00225C61 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78019552202C64FD00225C61 /* ViewController.swift in Sources */,
+				78019552202C64FD00225C61 /* PhotoBrowserViewController.swift in Sources */,
 				78019550202C64FD00225C61 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZB553URN3H;
-				INFOPLIST_FILE = DemoProject/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.dunso.DemoProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -291,7 +355,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZB553URN3H;
-				INFOPLIST_FILE = DemoProject/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.dunso.DemoProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PhotoBrowserViewController.swift
 //  DemoProject
 //
 //  Created by Nils Dunsö on 2018-02-08.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PhotoBrowserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
