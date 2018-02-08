@@ -13,6 +13,8 @@ class PhotosBrowserDataSource: NSObject, UICollectionViewDataSource {
     // Keeping reference to collection view to be able to perform data updates in this class directly
     weak var collectionView: UICollectionView?
     
+    var flickrItems = [FlickrItem]()
+    
     
     /**
      This init will set collection view delegate and register nibs needed. Keeping weak reference to collection view to avoid trouble.
@@ -27,24 +29,33 @@ class PhotosBrowserDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.cellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.cellIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        
+        cell.populate(item: flickrItems[indexPath.item])
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return flickrItems.count
     }
     
 }
 
 extension PhotosBrowserDataSource {
     
+    // TODO: Smarter and cleaner fetching
+    
     func fetchPhotos() {
         let request = FlickrRequest()
         
         request.fetchPhotos(withTag: "spacex") { (error, flickrResponse) in
-            debugPrint(flickrResponse as Any)
+            guard let response = flickrResponse else {
+                return
+            }
+            
+            self.flickrItems = response.items
+            self.collectionView?.reloadData()
         }
     }
     

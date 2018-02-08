@@ -33,6 +33,10 @@ class FlickrRequest {
         })
     }
     
+    func cancel() {
+        request?.cancel()
+    }
+    
 }
 
 enum FlickrRequestError: Error {

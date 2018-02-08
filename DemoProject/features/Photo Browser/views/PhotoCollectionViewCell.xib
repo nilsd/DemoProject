@@ -19,9 +19,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="107" height="108"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CN7-Ck-ZA8">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CN7-Ck-ZA8">
                         <rect key="frame" x="0.0" y="0.0" width="107" height="108"/>
-                        <color key="backgroundColor" red="1" green="0.41825721153846152" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.89551297949735453" green="0.89551297949735453" blue="0.89551297949735453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
                 </subviews>
             </view>

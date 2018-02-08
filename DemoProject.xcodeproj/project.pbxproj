@@ -21,6 +21,7 @@
 		7801957B202C6ED800225C61 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78019579202C6ED800225C61 /* PhotoCollectionViewCell.swift */; };
 		7801957C202C6ED800225C61 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7801957A202C6ED800225C61 /* PhotoCollectionViewCell.xib */; };
 		7801957F202C6FA600225C61 /* UICollectionView+nibs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7801957E202C6FA600225C61 /* UICollectionView+nibs.swift */; };
+		78019581202C71F900225C61 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78019580202C71F900225C61 /* DataRequest.swift */; };
 		90217B1EFBE764A9B1B9F24B /* Pods_DemoProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E826F7C254CA0DD1AA34BC /* Pods_DemoProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		78019579202C6ED800225C61 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		7801957A202C6ED800225C61 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		7801957E202C6FA600225C61 /* UICollectionView+nibs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+nibs.swift"; sourceTree = "<group>"; };
+		78019580202C71F900225C61 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		AA42623F59C2247E2F7EFB53 /* Pods-DemoProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoProject/Pods-DemoProject.release.xcconfig"; sourceTree = "<group>"; };
 		D4E826F7C254CA0DD1AA34BC /* Pods_DemoProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,6 +183,7 @@
 			children = (
 				78019572202C689800225C61 /* CustomDecoder.swift */,
 				7801956B202C66E900225C61 /* FlickrRequest.swift */,
+				78019580202C71F900225C61 /* DataRequest.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				78019571202C67A200225C61 /* FlickrItem.swift in Sources */,
 				7801956C202C66E900225C61 /* FlickrRequest.swift in Sources */,
 				78019552202C64FD00225C61 /* PhotoBrowserViewController.swift in Sources */,
+				78019581202C71F900225C61 /* DataRequest.swift in Sources */,
 				78019578202C6D7100225C61 /* PhotosBrowserDataSource.swift in Sources */,
 				7801957B202C6ED800225C61 /* PhotoCollectionViewCell.swift in Sources */,
 				78019550202C64FD00225C61 /* AppDelegate.swift in Sources */,
