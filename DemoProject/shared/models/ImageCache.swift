@@ -21,9 +21,9 @@ class ImageCache {
     
     // MARK: - Private functions
     
-    private func removeOldestImages() {
+    private func removeOldestImages() {        
         cached.sort { (c1, c2) -> Bool in
-            return c1.dateCached < c2.dateCached
+            return c1.dateCached > c2.dateCached
         }
         
         cached.removeLast(cached.count - imageCountLimit)
