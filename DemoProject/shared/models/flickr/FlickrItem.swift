@@ -10,4 +10,5 @@ import Foundation
 
 struct FlickrItem: Codable {
     var title: String
+    var media: FlickrMedia
 }

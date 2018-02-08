@@ -8,6 +8,9 @@
 
 import Alamofire
 
+/**
+ Fetches items from Flickr public feed API
+ */
 class FlickrRequest {
     
     private let baseURLString = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1"
