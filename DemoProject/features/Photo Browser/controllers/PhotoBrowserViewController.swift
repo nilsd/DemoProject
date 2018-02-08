@@ -26,12 +26,20 @@ class PhotoBrowserViewController: UIViewController {
     var flickrTagsToFetch = ["spacex", "falconheavy", "starman"]
     var currentFlickrTagIndex = 0
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
     
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.addSubview(refreshControl)
         dataSource = PhotosBrowserDataSource(collectionView: collectionView)
         
         title = "Loading..."
@@ -45,7 +53,7 @@ class PhotoBrowserViewController: UIViewController {
     
     
     // MARK: - UI helpers
-    
+
     func toggleInfoWrapper(show: Bool) {
         UIView.animate(withDuration: 0.25, animations: {
             self.infoWrapper.alpha = show ? 1 : 0
@@ -62,11 +70,11 @@ class PhotoBrowserViewController: UIViewController {
         
         title = newTitle
     }
-    
+
     
     // MARK: - Fetching
     
-    func fetchFlickrImages() {
+    func fetchFlickrImages(refreshControl: UIRefreshControl? = nil) {
         guard let tagToFetch = flickrTagsToFetch[safe: currentFlickrTagIndex] else { return }
         guard !dataSource.isFetchingData else { return }
         
@@ -75,6 +83,7 @@ class PhotoBrowserViewController: UIViewController {
         dataSource.fetchFlickrPhotos(withTag: tagToFetch) { [weak self] success in
             guard let strongSelf = self else { return }
             strongSelf.activityIndicator.stopAnimating()
+            refreshControl?.endRefreshing()
             
             guard success else { return }
             
@@ -87,6 +96,16 @@ class PhotoBrowserViewController: UIViewController {
                 strongSelf.infoLabel.isHidden = false
             }
         }
+    }
+    
+    
+    // MARK: - User actions
+    
+    @objc func handleRefresh(refreshControl: UIRefreshControl) {
+        dataSource.clearAllData()
+        currentFlickrTagIndex = 0
+        
+        fetchFlickrImages(refreshControl: refreshControl)
     }
     
 }

@@ -55,6 +55,14 @@ class PhotosBrowserDataSource: NSObject, UICollectionViewDataSource {
         collectionView?.insertItems(at: indexPaths)
     }
     
+    func clearAllData() {
+        media.removeAll()
+        mediaRequest?.cancel()
+        imageFetcher.cancel()
+        
+        collectionView?.reloadData()
+    }
+    
     
     // MARK: Helper functions
     
