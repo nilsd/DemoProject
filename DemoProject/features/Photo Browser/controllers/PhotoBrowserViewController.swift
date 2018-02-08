@@ -33,6 +33,8 @@ class PhotoBrowserViewController: UIViewController {
         super.viewDidLoad()
         
         dataSource = PhotosBrowserDataSource(collectionView: collectionView)
+        
+        title = "Loading..."
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +50,17 @@ class PhotoBrowserViewController: UIViewController {
         UIView.animate(withDuration: 0.25, animations: {
             self.infoWrapper.alpha = show ? 1 : 0
         })
+    }
+    
+    func updateTitle() {
+        let fetchedTags = flickrTagsToFetch.prefix(upTo: currentFlickrTagIndex)
+        
+        var newTitle = "Flickr: " + fetchedTags.reduce(into: "", { (res, tag) in
+            res += tag + ", "
+        })
+        newTitle.removeLast(2)
+        
+        title = newTitle
     }
     
     
@@ -66,6 +79,8 @@ class PhotoBrowserViewController: UIViewController {
             guard success else { return }
             
             strongSelf.currentFlickrTagIndex += 1
+            
+            strongSelf.updateTitle()
             
             // If no more tags
             if strongSelf.flickrTagsToFetch[safe: strongSelf.currentFlickrTagIndex] == nil {
