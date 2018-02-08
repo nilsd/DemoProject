@@ -14,6 +14,10 @@ class PhotoBrowserViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var infoWrapper: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var infoLabel: UILabel!
+    
     
     // MARK: - Properties
     
@@ -38,13 +42,35 @@ class PhotoBrowserViewController: UIViewController {
     }
     
     
+    // MARK: - UI helpers
+    
+    func toggleInfoWrapper(show: Bool) {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.infoWrapper.alpha = show ? 1 : 0
+        })
+    }
+    
+    
+    // MARK: - Fetching
+    
     func fetchFlickrImages() {
         guard let tagToFetch = flickrTagsToFetch[safe: currentFlickrTagIndex] else { return }
         guard !dataSource.isFetchingData else { return }
         
+        activityIndicator.startAnimating()
+        
         dataSource.fetchFlickrPhotos(withTag: tagToFetch) { [weak self] success in
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicator.stopAnimating()
+            
             guard success else { return }
-            self?.currentFlickrTagIndex += 1
+            
+            strongSelf.currentFlickrTagIndex += 1
+            
+            // If no more tags
+            if strongSelf.flickrTagsToFetch[safe: strongSelf.currentFlickrTagIndex] == nil {
+                strongSelf.infoLabel.isHidden = false
+            }
         }
     }
     
@@ -65,7 +91,7 @@ extension PhotoBrowserViewController : UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(
             top: defaultSpacing,
             left: defaultSpacing,
-            bottom: defaultSpacing,
+            bottom: infoWrapper.frame.height,
             right: defaultSpacing
         )
     }
@@ -106,6 +132,16 @@ extension PhotoBrowserViewController : UICollectionViewDelegateFlowLayout {
         if dataSource.isLastIndexPath(indexPath) {
             fetchFlickrImages()
         }
+    }
+    
+    
+    // MARK: UIScrollViewDelegate
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let bottomDistance = scrollView.contentSize.height - scrollView.contentOffset.y - view.frame.height
+        
+        // If bottom distance is less than info wrapper height divided by two, show info wrapper.
+        toggleInfoWrapper(show: bottomDistance < infoWrapper.frame.height / 2)
     }
     
 }

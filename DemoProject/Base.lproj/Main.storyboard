@@ -18,9 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCT-gC-ILW" userLabel="Info Wrapper">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No more photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8V-3Y-LNf">
+                                        <rect key="frame" x="135.5" y="16.5" width="104" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.63739045965608465" green="0.63739045965608465" blue="0.63739045965608465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="G6L-3P-RZn">
+                                        <rect key="frame" x="177" y="15" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="f8V-3Y-LNf" firstAttribute="centerY" secondItem="xCT-gC-ILW" secondAttribute="centerY" id="31n-CE-Alt"/>
+                                    <constraint firstAttribute="height" constant="50" id="9Gi-eN-LsJ"/>
+                                    <constraint firstItem="f8V-3Y-LNf" firstAttribute="centerX" secondItem="xCT-gC-ILW" secondAttribute="centerX" id="Y2Y-Ym-QhU"/>
+                                    <constraint firstItem="G6L-3P-RZn" firstAttribute="centerX" secondItem="f8V-3Y-LNf" secondAttribute="centerX" id="az6-Bu-mwk"/>
+                                    <constraint firstItem="G6L-3P-RZn" firstAttribute="centerY" secondItem="f8V-3Y-LNf" secondAttribute="centerY" id="z5C-ms-HfW"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Lj-Fx-Guc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2je-vl-uWS">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -35,7 +57,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="xCT-gC-ILW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9Vi-zM-WIu"/>
                             <constraint firstItem="4Lj-Fx-Guc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CyR-gZ-Bh3"/>
+                            <constraint firstItem="xCT-gC-ILW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="J7B-ZD-MRw"/>
+                            <constraint firstItem="xCT-gC-ILW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="LcE-xr-uyB"/>
                             <constraint firstItem="4Lj-Fx-Guc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YYS-Ma-rEO"/>
                             <constraint firstItem="4Lj-Fx-Guc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bNh-yO-n54"/>
                             <constraint firstItem="4Lj-Fx-Guc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lnv-ud-IHj"/>
@@ -44,7 +69,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Photo Browser" id="Q1z-q3-qim"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="G6L-3P-RZn" id="Pg4-v6-nsV"/>
                         <outlet property="collectionView" destination="4Lj-Fx-Guc" id="VUM-LS-L8a"/>
+                        <outlet property="infoLabel" destination="f8V-3Y-LNf" id="dy7-Y1-RH3"/>
+                        <outlet property="infoWrapper" destination="xCT-gC-ILW" id="bf7-IK-a0N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
