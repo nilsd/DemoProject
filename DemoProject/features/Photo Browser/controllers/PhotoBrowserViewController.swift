@@ -31,7 +31,7 @@ class PhotoBrowserViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        dataSource.fetchPhotos()
+        dataSource.fetchFlickrPhotos(withTag: "spacex")
     }
     
 }

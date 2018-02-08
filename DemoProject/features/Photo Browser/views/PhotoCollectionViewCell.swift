@@ -15,43 +15,13 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    var imageRequest: DataRequest?
     
-    
-    func populate(item: FlickrItem) {
-        fetchImage(withURL: item.media.url)
+    func populateImage(_ image: UIImage) {
+        imageView.image = image
     }
     
-    
     override func prepareForReuse() {
-        imageRequest?.cancel()
         imageView.image = nil
     }
     
 }
-
-// TODO: Move image requests to a more appropriate place
-
-extension PhotoCollectionViewCell {
-    
-    private func fetchImage(withURL url: URL) {
-        imageRequest?.cancel()
-        
-        imageRequest = DataRequest()
-        imageRequest?.getImageData(fromURL: url, completion: { (data) in
-            guard let data = data else {
-                debugPrint("Could not fetch image data", url.absoluteString)
-                return
-            }
-            
-            guard let image = UIImage(data: data) else {
-                debugPrint("Could not decode image from data", url.absoluteString)
-                return
-            }
-            
-            self.imageView.image = image
-        })
-    }
-    
-}
-

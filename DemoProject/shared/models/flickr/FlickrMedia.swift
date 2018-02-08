@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FlickrMedia: Codable {
+struct FlickrMedia: RemoteMedia, Codable {
     var url: URL
     
     enum CodingKeys: String, CodingKey {
