@@ -10,19 +10,21 @@ import UIKit
 
 class PhotoBrowserViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var dataSource: PhotosBrowserDataSource!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dataSource = PhotosBrowserDataSource(collectionView: collectionView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
-        let request = FlickrRequest()
-        
-        request.fetchPhotos(withTag: "spacex") { (error, flickrResponse) in
-            debugPrint(flickrResponse as Any)
-        }
+        dataSource.fetchPhotos()
     }
     
 }
