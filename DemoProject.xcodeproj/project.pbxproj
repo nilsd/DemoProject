@@ -181,9 +181,9 @@
 		78019568202C65CF00225C61 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				78019576202C6C9500225C61 /* flickr */,
 				78019586202CA09C00225C61 /* ImageCache.swift */,
 				78019588202CA8D500225C61 /* RemoteMedia.swift */,
-				78019576202C6C9500225C61 /* flickr */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -192,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				78019572202C689800225C61 /* CustomDecoder.swift */,
-				7801956B202C66E900225C61 /* FlickrRequest.swift */,
 				78019580202C71F900225C61 /* DataRequest.swift */,
 				78019582202C99C000225C61 /* ImageFetcher.swift */,
 			);
@@ -202,6 +201,7 @@
 		78019576202C6C9500225C61 /* flickr */ = {
 			isa = PBXGroup;
 			children = (
+				7801956B202C66E900225C61 /* FlickrRequest.swift */,
 				7801956E202C676A00225C61 /* FlickrResponse.swift */,
 				78019570202C67A200225C61 /* FlickrItem.swift */,
 				78019574202C6C0E00225C61 /* FlickrMedia.swift */,
@@ -212,8 +212,8 @@
 		7801957D202C6F9500225C61 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7801957E202C6FA600225C61 /* UICollectionView+nibs.swift */,
 				78019584202C9FE900225C61 /* Array+safeIndex.swift */,
+				7801957E202C6FA600225C61 /* UICollectionView+nibs.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
