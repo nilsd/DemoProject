@@ -15,7 +15,6 @@
 		7801956C202C66E900225C61 /* FlickrRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7801956B202C66E900225C61 /* FlickrRequest.swift */; };
 		7801956F202C676A00225C61 /* FlickrResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7801956E202C676A00225C61 /* FlickrResponse.swift */; };
 		78019571202C67A200225C61 /* FlickrItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78019570202C67A200225C61 /* FlickrItem.swift */; };
-		78019573202C689800225C61 /* CustomDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78019572202C689800225C61 /* CustomDecoder.swift */; };
 		78019575202C6C0E00225C61 /* FlickrMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78019574202C6C0E00225C61 /* FlickrMedia.swift */; };
 		78019578202C6D7100225C61 /* PhotosBrowserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78019577202C6D7100225C61 /* PhotosBrowserDataSource.swift */; };
 		7801957B202C6ED800225C61 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78019579202C6ED800225C61 /* PhotoCollectionViewCell.swift */; };
@@ -41,7 +40,6 @@
 		7801956B202C66E900225C61 /* FlickrRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrRequest.swift; sourceTree = "<group>"; };
 		7801956E202C676A00225C61 /* FlickrResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrResponse.swift; sourceTree = "<group>"; };
 		78019570202C67A200225C61 /* FlickrItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrItem.swift; sourceTree = "<group>"; };
-		78019572202C689800225C61 /* CustomDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDecoder.swift; sourceTree = "<group>"; };
 		78019574202C6C0E00225C61 /* FlickrMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrMedia.swift; sourceTree = "<group>"; };
 		78019577202C6D7100225C61 /* PhotosBrowserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosBrowserDataSource.swift; sourceTree = "<group>"; };
 		78019579202C6ED800225C61 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 		7801956D202C675100225C61 /* networking */ = {
 			isa = PBXGroup;
 			children = (
-				78019572202C689800225C61 /* CustomDecoder.swift */,
 				78019580202C71F900225C61 /* DataRequest.swift */,
 				78019582202C99C000225C61 /* ImageFetcher.swift */,
 			);
@@ -359,7 +356,6 @@
 				7801957B202C6ED800225C61 /* PhotoCollectionViewCell.swift in Sources */,
 				78019583202C99C000225C61 /* ImageFetcher.swift in Sources */,
 				78019550202C64FD00225C61 /* AppDelegate.swift in Sources */,
-				78019573202C689800225C61 /* CustomDecoder.swift in Sources */,
 				78019587202CA09C00225C61 /* ImageCache.swift in Sources */,
 				78019575202C6C0E00225C61 /* FlickrMedia.swift in Sources */,
 				78019589202CA8D500225C61 /* RemoteMedia.swift in Sources */,

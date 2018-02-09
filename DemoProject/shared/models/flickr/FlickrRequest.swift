@@ -35,7 +35,7 @@ class FlickrRequest {
                 return completion(.noData, nil)
             }
             
-            completion(nil, try? CustomDecoder.decode(type: FlickrResponse.self, data: data))
+            completion(nil, try? JSONDecoder().decode(FlickrResponse.self, from: data))
         })
     }
     
