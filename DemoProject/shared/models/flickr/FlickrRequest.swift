@@ -35,7 +35,13 @@ class FlickrRequest {
                 return completion(.noData, nil)
             }
             
-            completion(nil, try? JSONDecoder().decode(FlickrResponse.self, from: data))
+            do {
+                let flickrResponse = try JSONDecoder().decode(FlickrResponse.self, from: data)
+                completion(nil, flickrResponse)
+            } catch {
+                debugPrint(error)
+                completion(.decoding, nil)
+            }
         })
     }
     
@@ -48,6 +54,7 @@ class FlickrRequest {
 
 enum FlickrRequestError: Error {
     case noData
+    case decoding
     case unhandled
 }
 
